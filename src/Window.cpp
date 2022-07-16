@@ -48,16 +48,17 @@ void	Window::create()
 		return ;
 	}
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+//	glfwSetKeyCallback(window, KeyCallBack);
 }
 
 void	Window::draw()
 {
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 	while(!glfwWindowShouldClose(window))
 	{
 		processInput();
 
 		// rendering commands
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glfwSwapBuffers(window);
@@ -69,4 +70,6 @@ void	Window::processInput()
 {
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+    else if(glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS)
+		glClearColor(0.4f, 0.1f, 0.2f, 1.0f);
 }
