@@ -11,7 +11,7 @@
 
 class Shader {
 	public:
-		Shader(const char **shaderSource, GLenum shaderType);
+		Shader(const char *shaderSource, GLenum shaderType);
 		~Shader();
 
 		unsigned int	getId();
@@ -21,7 +21,7 @@ class Shader {
 
 		// attributes
 		unsigned int	shaderId;
-		const char	**shaderSource;
+		const char	*shaderSource;
 };
 
 #endif

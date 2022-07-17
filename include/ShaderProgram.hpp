@@ -14,6 +14,8 @@ class ShaderProgram {
 		ShaderProgram(Shader *vertexShader, Shader *fragmentShader);
 		~ShaderProgram();
 
+		unsigned int	getProgramId();
+
 	private:
 		void	linkShaders();
 

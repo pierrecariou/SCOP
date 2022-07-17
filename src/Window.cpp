@@ -13,7 +13,7 @@ Window::Window()
 	std::cout << "window created" << std::endl;
 	initialize();
 	create();
-	draw();
+	//draw();
 }
 
 Window::~Window()
@@ -51,15 +51,18 @@ void	Window::create()
 //	glfwSetKeyCallback(window, KeyCallBack);
 }
 
-void	Window::draw()
+void	Window::draw(unsigned int shaderProgramId, unsigned int VAOId)
 {
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	glUseProgram(shaderProgramId);
+	glBindVertexArray(VAOId);
 	while(!glfwWindowShouldClose(window))
 	{
 		processInput();
-
 		// rendering commands
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();    

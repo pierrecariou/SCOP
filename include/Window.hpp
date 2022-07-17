@@ -20,7 +20,7 @@ class Window
 		Window();
 		~Window();
 
-		void	draw();
+		void	draw(unsigned int shaderProgramId, unsigned int VAOId);
 
 	private:
 		void	initialize();

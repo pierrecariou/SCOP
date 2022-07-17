@@ -8,7 +8,7 @@
 
 #include <Shader.hpp>
 
-Shader::Shader(const char **shaderSource, GLenum shaderType) : shaderSource(shaderSource)
+Shader::Shader(const char *shaderSource, GLenum shaderType) : shaderSource(shaderSource)
 {
 	shaderId = glCreateShader(shaderType);
 	compile();
@@ -26,7 +26,7 @@ unsigned int	Shader::getId()
 
 void	Shader::compile()
 {
-	glShaderSource(shaderId, 1, shaderSource, NULL);
+	glShaderSource(shaderId, 1, &shaderSource, NULL);
 	glCompileShader(shaderId);
 
 	// check if success

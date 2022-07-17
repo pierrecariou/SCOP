@@ -20,11 +20,17 @@ ShaderProgram::~ShaderProgram()
 
 }
 
+unsigned int	ShaderProgram::getProgramId()
+{
+	return programId;
+}
+
 void	ShaderProgram::linkShaders()
 {
 	glAttachShader(programId, vertexShader->getId());
 	glAttachShader(programId, fragmentShader->getId());
 	glLinkProgram(programId);
+	//glValidateProgram(programId);
 
 	// check if succes
 	int  success;
@@ -35,8 +41,6 @@ void	ShaderProgram::linkShaders()
     	glGetProgramInfoLog(programId, 512, NULL, infoLog);
     	std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
 	}
-	// activate program
-	glUseProgram(programId);
 	// delete shaders
 	delete vertexShader;
 	delete fragmentShader;
